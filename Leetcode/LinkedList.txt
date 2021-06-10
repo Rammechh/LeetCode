@@ -1,0 +1,105 @@
+class Node:
+    def __init__(self, data):
+        self.data=data
+        self.next=None
+
+class LinkedList:
+    def __init__(self):
+        self.head=None
+
+    def insert(self,newNode):
+        if self.head is None:
+            self.head=newNode
+        else:
+            x=self.head
+            while True:
+                if x.next is None:
+                    break
+                x=x.next
+            x.next=newNode
+    def Display(self):
+        current = self.head
+        while True:
+            if current is None:
+                break
+            print(current.data,end=" ")
+            current=current.next
+    def count(self):
+        current=self.head
+        con=0
+        while True:
+            if current is None:
+                break
+            con+=1
+            current=current.next
+        return con
+
+    def insert_end(self,newNode):
+        self.insert(newNode)
+
+    def insert_beg(self,newNode):
+        current=self.head
+
+        # self.head=newNode
+        # self.head.next=current
+        #above two lines and below two serve same purpose
+        newNode.next=current
+        self.head=newNode
+
+    def insert_atIndex(self,newNode,n):
+        current=self.head
+        indx=0
+        while True:
+            if current is None:
+                break
+            indx+=1
+            if indx==n:
+                newNode.next=current.next
+                current.next=newNode
+            current=current.next
+    
+    def insert_afternum(self,newNode,n):
+        current=self.head
+        while True:
+            if current is None:
+                break
+            if current.data==n:
+                newNode.next=current.next
+                current.next=newNode
+            current=current.next
+
+    def findIndex(self,newNode):
+        c=0
+        x=self.head
+        while True:
+            if x.data==newNode:
+                return c
+                break
+            c+=1
+            x=x.next
+
+a=Node(5)
+b=Node(9)
+c=Node(15)
+d=Node(100)
+e=Node(200)
+f=Node(500)
+g=Node(55)
+l1=LinkedList()
+l1.insert(a)
+l1.insert(b)
+l1.insert(c)
+l1.insert_end(d)
+l1.insert_beg(e)
+l1.insert_afternum(f, 200)
+l1.insert_atIndex(g, 3)
+l1.Display()
+print('\n')
+print(l1.count())
+print(l1.findIndex(100))
+
+# ID's
+# print(id(b))
+# #print(id(a.next))
+# print(id(c))
+

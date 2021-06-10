@@ -1,0 +1,109 @@
+
+
+54. Spiral Matrix
+
+Given an m x n matrix, return all elements of the matrix in spiral order.
+
+ 
+
+Example 1:
+
+
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+Example 2:
+
+
+Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+ 
+
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 10
+-100 <= matrix[i][j] <= 100
+
+
+
+--------------------------------------------------------------Solution---------------------------------------------------------
+
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        n=len(matrix)
+        m=len(matrix[0])
+        top=0
+        left=0
+        down=n-1
+        right=m-1
+        dir=0
+        res=[]
+        while top<=down and left<=right:
+            if dir==0:
+                for i in range(left,right+1):
+                    res.append(matrix[top][i])
+                top+=1
+            elif dir==1:
+                for i in range(top,down+1):
+                    res.append(matrix[i][right])
+                right-=1
+            elif dir==2:
+                for i in range(right,left-1,-1):
+                    res.append(matrix[down][i])
+                down-=1
+            elif dir==3:
+                for i in range(down,top-1,-1):
+                    res.append(matrix[i][left])
+                left+=1 
+            dir=(dir+1)%4
+            
+        return(res)
+		
+		
+		
+---------------------------------------------For Generating---------------------------------------------------------------------------
+def spiralMatrixII(n):
+    top=0
+    left=0
+    down=n-1
+    right=n-1
+    dir=0
+    a=1
+    res=[[0 for x in range (n)] for y in range(n)]
+    while top<=down and left<=right:
+        if dir==0:
+            for i in range(left,right+1):
+                res[top][i]=a
+                a+=1
+            top+=1
+        elif dir==1:
+            for i in range(top,down+1):
+                res[i][right]=a
+                a+=1
+                #res.append(matrix[i][right])
+            right-=1
+        elif dir==2:
+            for i in range(right,left-1,-1):
+                res[down][i]=a
+                a+=1
+                #res.append(matrix[down][i])
+            down-=1
+        elif dir==3:
+            for i in range(down,top-1,-1):
+                res[i][left]=a
+                a+=1
+                #res.append(matrix[i][left])
+            left+=1 
+        dir=(dir+1)%4
+            
+    return(res)
+
+def main():
+    n = int(input())
+    matrix = spiralMatrixII(n)
+    for row in matrix:
+        print(*row)
+
+if __name__=="__main__":
+    main()

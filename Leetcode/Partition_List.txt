@@ -1,0 +1,142 @@
+Given the head of a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
+
+You should preserve the original relative order of the nodes in each of the two partitions.
+
+ 
+
+Example 1:
+
+
+Input: head = [1,4,3,2,5,2], x = 3
+Output: [1,2,2,4,3,5]
+Example 2:
+
+Input: head = [2,1], x = 2
+Output: [1,2]
+
+class Solution:
+    def partition(self, head: ListNode, x: int) -> ListNode:
+        s1=[]
+        s2=[]
+        current=head
+        while True:
+            if current==None:
+                break
+            elif current.val<x:
+                s1.append(current.val)
+            else:
+                s2.append(current.val)
+            current=current.next
+        s1.extend(s2)
+        x=None
+        i=0
+        for i in s1[::-1]:
+            newNode=ListNode(i)
+            newNode.next=x
+            x=newNode  
+        return x
+		
+		
+*)      d1=c1=ListNode()
+        d2=c2=ListNode()
+        
+        while head:
+            if head.val<x:
+                c1.next=head
+                c1=c1.next
+            else:
+                c2.next=head
+                c2=c2.next
+            head=head.next
+        
+        c2.next=None
+        c1.next=d2.next
+        return d1.next
+        
+-----------------------------------------------Alternate Solutions-------------------------------------------
+1)def partition(self, head: ListNode, x: int) -> ListNode:
+        if head is None:
+            return None
+        dummy1 = ListNode(-1)
+        dummy2 = ListNode(-1)
+        e1, e2 = dummy1, dummy2
+        while head:
+            if head.val < x:
+                e1.next = head
+                e1 = e1.next
+            else:
+                e2.next = head
+                e2 = e2.next
+            head = head.next
+
+        e2.next = None  #e2 will be atleast dummy, hence no need to check whether e2 exists or not
+        e1.next = dummy2.next
+    
+        return dummy1.next
+
+2)if not head: return None
+        
+        pre_head = ListNode()
+        post_head = ListNode()
+        
+        pre_curr = pre_head
+        post_curr = post_head
+        
+        curr = head
+        
+        while curr:
+            if curr.val < x:
+                pre_curr.next = curr
+                pre_curr = pre_curr.next
+            else:
+                post_curr.next = curr
+                post_curr = post_curr.next
+            curr = curr.next
+            
+        post_curr.next = None
+        pre_curr.next = post_head.next
+        
+        return pre_head.next
+		
+3)class Solution:
+    def partition(self, head: ListNode, x: int) -> ListNode:
+        if not head or not head.next: return head
+        dummy = ListNode()
+        dummy.next = head
+        s0, s = dummy, dummy.next
+        while s and s.val<x:
+            s0, s = s, s.next
+        
+        if not s or not s.next: return head
+        prev, cur = s, s.next
+        
+        
+        while cur:
+            nex = cur.next
+            if cur.val<x:
+                s0.next = cur
+                cur.next = s
+                prev.next = nex
+                s0 = cur
+                cur = nex
+            else:
+                prev, cur = cur, nex
+            
+        
+        return dummy.next
+
+4)less_than = ListNode()
+        greater_than_eq = ListNode()
+        partitions = [less_than, greater_than_eq]
+        
+        for node in iter_llist(node):
+            partitions[node.val >= x].next = node
+            partitions[node.val >= x] = node
+            
+        # connect end of lt -> gte
+        # disconnect tail of gte
+        partitions[0].next = greater_than_eq.next
+        partitions[1].next = None
+        
+        return less_than.next
+

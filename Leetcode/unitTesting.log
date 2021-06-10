@@ -1,0 +1,15 @@
+2021-05-09 16:37:51,161 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     Running tests...
+2021-05-09 16:37:51,502 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     sample-input-1.txt : SUCCESS
+2021-05-09 16:37:51,511 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     base-input-1.txt : SUCCESS
+2021-05-09 16:37:51,548 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     base-input-2.txt : SUCCESS
+2021-05-09 16:37:51,580 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     base-input-3.txt : SUCCESS
+2021-05-09 16:37:51,625 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     base-input-4.txt : SUCCESS
+2021-05-09 16:37:51,807 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     base-input-5.txt : SUCCESS
+2021-05-09 16:37:51,887 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     edge-input-2.txt : SUCCESS
+2021-05-09 16:37:51,944 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     edge-input-1.txt : SUCCESS
+2021-05-09 16:37:52,021 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     perf-input-1.txt : SUCCESS
+2021-05-09 16:37:52,099 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     perf-input-3.txt : SUCCESS
+2021-05-09 16:37:52,101 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     perf-input-2.txt : SUCCESS
+2021-05-09 16:37:52,134 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     perf-input-4.txt : FAILURE
+2021-05-09 16:37:52,200 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     perf-input-5.txt : SUCCESS
+2021-05-09 16:37:52,231 unitTesting-ba44d5b1-f4bd-442f-9e95-45b465110bd9 INFO     perf-input-6.txt : FAILURE

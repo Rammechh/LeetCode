@@ -1,0 +1,98 @@
+102. Binary Tree Level Order Traversal
+
+Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
+
+ 
+
+Example 1:
+
+
+Input: root = [3,9,20,null,null,15,7]
+Output: [[3],[9,20],[15,7]]
+Example 2:
+
+Input: root = [1]
+Output: [[1]]
+Example 3:
+
+Input: root = []
+Output: []
+ 
+
+Constraints:
+
+The number of nodes in the tree is in the range [0, 2000].
+-1000 <= Node.val <= 1000
+
+------------------------------------------------------------Solution------------------------------------------------------
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        queue=[]
+        queue.append(root)
+        temp=[]
+        result=[]
+        tempp=[]
+        while len(queue)!=0:     
+            root=queue.pop(0)
+            tempp.append(root.val)
+            if root.left!=None:
+                queue.append(root.left)
+            if root.right!=None:
+                queue.append(root.right)
+        print(tempp)
+
+2)
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if not root: return
+        di=defaultdict(list)
+        def solve(root,level,di):
+            if not root: return
+            di[level].append(root.val)
+            if root.left:solve(root.left,level+1,di)
+            if root.right:solve(root.right,level+1,di) 
+        solve(root,0,di)
+        res=[v for k,v in di.items()]
+        return(res)
+3)
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if not root:
+            return None
+        queue=[]
+        return_ans=[]
+        queue.append(root)
+        while(len(queue)>0):
+            ans=[]
+            l=len(queue)
+            for _ in range(l):
+                
+                node=queue.pop(0)
+                ans.append(node.val)
+                if node.left is not None:
+                    queue.append(node.left)
+                if node.right is not None:
+                    queue.append(node.right)
+                
+            return_ans.append(ans)
+        return return_ans
+            
+---------------------------------------------------------------------------------------------------------------------------------

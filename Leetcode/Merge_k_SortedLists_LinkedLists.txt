@@ -1,0 +1,81 @@
+23. Merge k Sorted Lists
+Hard
+
+6955
+
+351
+
+Add to List
+
+Share
+You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+
+Merge all the linked-lists into one sorted linked-list and return it.
+
+ 
+
+Example 1:
+
+Input: lists = [[1,4,5],[1,3,4],[2,6]]
+Output: [1,1,2,3,4,4,5,6]
+Explanation: The linked-lists are:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+merging them into one sorted list:
+1->1->2->3->4->4->5->6
+Example 2:
+
+Input: lists = []
+Output: []
+Example 3:
+
+Input: lists = [[]]
+Output: []
+
+------------------------------------------------Solution-----------------------
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        lis=[]
+        for i in lists:
+            while i!=None:
+                lis.append(i.val)
+                i=i.next
+        x=None
+        lis.sort()
+        for i in lis[::-1]:
+            newNode=ListNode(i)
+            newNode.next=x
+            x=newNode
+        return x
+
+2)# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        lis=[]
+        for i in lists:
+            while i!=None:
+                lis.append(i.val)
+                i=i.next
+        if not lis:
+            return None
+        lis.sort()
+        xhead=ListNode(lis[0])
+        x=xhead
+        for i in range(1,len(lis)):
+            x.next=ListNode(lis[i])
+            x=x.next
+
+        return xhead
+                

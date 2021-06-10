@@ -1,0 +1,118 @@
+383. Ransom Note
+Easy
+
+878
+
+241
+
+Add to List
+
+Share
+Given two stings ransomNote and magazine, return true if ransomNote can be constructed from magazine and false otherwise.
+
+Each letter in magazine can only be used once in ransomNote.
+
+ 
+
+Example 1:
+
+Input: ransomNote = "a", magazine = "b"
+Output: false
+Example 2:
+
+Input: ransomNote = "aa", magazine = "ab"
+Output: false
+Example 3:
+
+Input: ransomNote = "aa", magazine = "aab"
+Output: true
+
+
+
+
+-------------------------------solution-0-----------------------------
+1)#from collections import Counter
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        c1=Counter(ransomNote)
+        c2=Counter(magazine)
+        f=1
+        for i in c1.items():
+            print(i)
+        for k,v in c1.items():
+            if k not in c2 or c2[k]<v:
+                f=0
+                break
+        if f==1:
+            return True
+
+2)#from collections import Counter
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        c1=Counter(ransomNote)
+        c2=Counter(magazine)
+        f=1
+        for k,v in c1.items():
+            if k in c2 and c2[k]>=v:
+                continue
+            else:
+                f=0
+                break
+        if f==0:
+            return False
+        else:
+            return True
+
+3)#from collections import Counter
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        c1=Counter(ransomNote)
+        c2=Counter(magazine)
+        if c1-c2=={}:
+            return True
+        else:
+            return False
+			
+4)-----------------------Efficient----------------------
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        dic={}
+        for i in ransomNote:
+            dic[i]=ransomNote.count(i)
+        for i in dic:
+            if i not in magazine:
+                return False
+            elif magazine.count(i)<dic[i]:
+                return False
+        return True
+        
+5)class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        c1=Counter(ransomNote)
+        c2=Counter(magazine)
+        for k,v in c1.items():
+            if k not in c2 or c2[k]<v:
+                return False
+        return True
+		
+6)TimeLimitExceed------------
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        dic={}
+        dic1={}
+        f=1
+        for i in ransomNote:
+            dic[i]=ransomNote.count(i)
+        for i in magazine:
+            dic1[i]=magazine.count(i)
+        for k,v in dic.items():
+            if k in dic1 and dic1[k]>=v:
+                continue
+            else:
+                f=0
+                break
+        if f==1:
+            return True
+        else:
+            return False
+
